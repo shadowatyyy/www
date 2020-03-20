@@ -1,0 +1,157 @@
+body {
+    text-align: center;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+#lot_bg {
+	font-family: sans-serif;
+    text-align: center;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+	background-image: url(https://1.bp.blogspot.com/-upDgWmYeR-g/Wi9obwelNdI/AAAAAAABZm8/fW3DSu7xac0PdHpfev7mxTx1wVoLtzxLwCLcBGAs/s1600/2015-12-13_0117-0118HDR.jpg);
+}
+
+#lista_bg { 
+	font-family: sans-serif;
+    text-align: center;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+	background-image: url(https://wallpaperaccess.com/full/1706769.jpg);
+}
+
+footer { 
+    background-color: #4000ff;
+    color: white;
+    font-family: sans-serif;
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+	margin: auto;
+	position: fixed;
+    bottom: 0px;
+}
+
+header {
+	background-color: #4000ff;
+	color: white;
+    width: 100%;
+    font-size: 100px;
+    text-align: center;
+}
+
+table { 
+    margin-top: 23%;
+    width: 100%;
+}
+
+#logo {
+    display: block;
+    width: 15%;
+    margin: auto;
+}
+
+td {
+    border: 1px solid white;
+    padding: 20px;
+}
+
+th {
+    border: 1px solid white;
+    padding: 20px;
+    background-color: #4000ff;
+}
+
+a {
+	color: white;
+}
+
+#kontener_tabelki { 
+	position: relative;
+	background-color: #4000ff;
+	color: white;
+	font-weight: bold;
+	margin-top: -400px
+}
+
+h1 {
+    width: 60%;
+    margin: auto;
+    background-color: darkblue;
+    margin-bottom: 20px;
+}
+
+.kontener {
+    width: 75%;
+    margin: auto;
+    padding: 40px;
+    position: relative;
+    height: 500px;
+}
+
+.miejsce {
+    height: 500px;
+    width: 33%;
+    position: absolute;
+    text-align: center;
+}
+
+#skad {
+    left: 0%;
+}
+
+#dokad {
+    left: 66%;
+}
+
+.miasto {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.zdjecie {
+	width: 100%;
+	position: relative;
+}
+
+.zawartosc {
+	color: white;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	margin: auto;
+    top: 50%;
+    transform: translateY(-75%);
+}
+
+#samolot {
+	color: white;
+    width: 60%;
+    margin: auto;
+	padding: 20px;
+    transform: translateY(-50%);
+}
+
+.informacja {
+	font-weight: bold;
+	font-size: 30px;
+	margin: auto;
+}
+
+.tresc {
+    font-size: 30px;
+}
+
+#samolot_zdjecie {
+    margin-top: 30px;
+	margin-bottom: 20px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+    width: 500px;
+}
+ol {
+	margin-top: 0px;
+}
