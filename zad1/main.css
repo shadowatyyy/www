@@ -43,8 +43,8 @@ header {
 }
 
 table { 
-    margin-top: 23%;
-    width: 100%;
+	width: 100%;
+	padding: 15px
 }
 
 #logo {
@@ -56,24 +56,26 @@ table {
 td {
     border: 1px solid white;
     padding: 20px;
+    border-collapse: collapse;
 }
 
 th {
     border: 1px solid white;
     padding: 20px;
     background-color: #4000ff;
+    border-collapse: collapse;
 }
 
 a {
 	color: white;
 }
 
-#kontener_tabelki { 
+#tabelka { 
+	margin-top: 0;
 	position: relative;
 	background-color: #4000ff;
 	color: white;
 	font-weight: bold;
-	margin-top: -400px
 }
 
 h1 {
@@ -85,7 +87,8 @@ h1 {
 
 .kontener {
     width: 75%;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     padding: 40px;
     position: relative;
     height: 500px;
@@ -112,7 +115,7 @@ h1 {
 }
 
 .zdjecie {
-	width: 100%;
+	width: 80%;
 	position: relative;
 }
 
@@ -121,23 +124,50 @@ h1 {
 	width: 100%;
 	text-align: center;
 	position: absolute;
+	margin-left: auto;
+    margin-right: auto;
+	top: 50%;
+	margin-top: -70%;
+}
+
+#pierwszy {
+	color: white;
+	background-color: #4000ff;
+	width: 60%;
 	margin: auto;
-    top: 50%;
-    transform: translateY(-75%);
+}
+
+#drugi {
+	color: white;
+	background-color: darkblue;
+	width: 80%;
+	margin: auto;
+}
+
+#trzeci {
+	color: white;
+	background-color: darkblue;
+	width: 80%;
+	position: absolute;
+	top: 55%;
+	left: 10%;
+	text-align: center;
 }
 
 #samolot {
 	color: white;
     width: 60%;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
 	padding: 20px;
-    transform: translateY(-50%);
+	margin-top: -15%;
 }
 
 .informacja {
 	font-weight: bold;
 	font-size: 30px;
-	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .tresc {
@@ -150,8 +180,9 @@ h1 {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-    width: 500px;
+    width: 40%;
 }
+
 ol {
 	margin-top: 0px;
 }
