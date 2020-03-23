@@ -101,7 +101,6 @@ nav {
 .miejsce {
     height: 500px;
     width: 33%;
-    position: absolute;
     text-align: center;
     margin-top: 0%;
     color: white;
@@ -110,11 +109,11 @@ nav {
 }
 
 #skad {
-    left: 0%;
+    float: left;
 }
 
 #dokad {
-    left: 66%;
+    float: right;
 }
 
 .miasto {
