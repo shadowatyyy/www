@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Lista lotów</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+
+<body>
+    <section id="grid">
+        <section id="header_logo">
+            <header>Lista lotów</header>
+            <img id="logo" src="https://www.logolynx.com/images/logolynx/03/0327fcfdaeece86b0c635b1bc2feefae.jpeg"
+                alt="Logo">
+        </section>
+
+        <ul class="menu">
+            <a href="lista.html">Lista lotów</a>
+            <li>
+                <a href="brak">Lot 1: RDM - BIA</a>
+                <ul class="podmenu">
+                    <li><a href="brak">Radom</a></li>
+                    <li><a href="brak">Białystok</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="brak">Lot 2: WTK - KRK</a>
+                <ul class="podmenu">
+                    <li><a href="brak">Watykan</a></li>
+                    <li><a href="brak">Kraków</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="brak">Lot 3: LDN - DUB</a>
+                <ul class="podmenu">
+                    <li><a href="brak">Londyn</a></li>
+                    <li><a href="brak">Dublin</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="lot.html">Lot 95: LAN - CHG</a>
+                <ul class="podmenu">
+                    <li><a href="brak">Los Angeles</a></li>
+                    <li><a href="brak">Chłodnica Górska</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <table id="tabelka">
+            <tr>
+                <th>Lot numer</th>
+                <th>Skąd</th>
+                <th>Dokąd</th>
+                <th>Data</th>
+                <th>Godzina</th>
+            </tr>
+
+            <tr>
+                <td><a href='lot.html'>95</a></td>
+                <td>Los Angeles</td>
+                <td>Chłodnica Górska</td>
+                <td>01.01.2006</td>
+                <td>05:50</td>
+            </tr>
+
+            <tr>
+                <td><a href='lot.html'>86</a></td>
+                <td>Chłodnica Górska</td>
+                <td>Los Angeles</td>
+                <td>03.05.2006</td>
+                <td>14:20</td>
+            </tr>
+        </table>
+
+        <section id="opoznienia_rezerwacja">
+
+            <table id="opoznienia">
+                <tr id="bialy_wiersz">
+                    <th>Skąd</th>
+                    <th>Dokąd</th>
+                    <th>Data</th>
+                    <th>Godzina</th>
+                    <th>Opóźnienie</th>
+                </tr>
+
+                <tr class="lekko">
+                    <td>Los Angeles</td>
+                    <td>Chłodnica Górska</td>
+                    <td>01.01.2006</td>
+                    <td>05:50</td>
+                    <td>20 minut</td>
+                </tr>
+
+                <tr class="odwolany">
+                    <td>Chłodnica Górska</td>
+                    <td>Los Angeles</td>
+                    <td>03.05.2006</td>
+                    <td>14:20</td>
+                    <td>Odwołany</td>
+                </tr>
+
+                <tr class="bardzo">
+                    <td>Radom</td>
+                    <td>Białystok</td>
+                    <td>01.01.2003</td>
+                    <td>5:20</td>
+                    <td>150 minut</td>
+                </tr>
+            </table>
+
+            <section id="rezerwacja">
+                <h1>Zarezerwuj lot</h1>
+
+                <label for="start">Skąd:</label>
+                <select id="start">
+                    <option value="la">Los Angeles</option>
+                    <option value="chlodnica">Chłodnica Górska</option>
+                    <option value="radom">Radom</option>
+                </select><br>
+
+                <label for="destination">Dokąd:</label>
+                <select id="destination">
+                    <option value="krakow">Kraków</option>
+                    <option value="watykan">Watykan</option>
+                    <option value="bialystok">Białystok</option>
+                </select><br>
+
+                <label for="dzien">Data:</label>
+                <input type="date" id="dzien" name="dzien"><br>
+
+                <label for="imie">Imię pasażera:</label>
+                <input type="text" id="imie" name="imie"><br>
+
+                <label for="nazwisko">Nazwisko pasażera:</label>
+                <input type="text" id="nazwisko" name="nazwisko"><br>
+
+                <button onclick="document.getElementById('imie').value='';
+                        document.getElementById('nazwisko').value='';
+                        document.getElementById('dzien').value=''">
+                    Wyczyść
+                </button>
+
+                <button>Wyślij</button>
+            </section>
+
+        </section>
+
+        <p class="prostokat">Zarezerwowano lot</p>
+
+        <footer> Autor - Dawid Jamka </footer>
+
+    </section>
+</body>
+
+</html>
