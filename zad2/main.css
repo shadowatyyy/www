@@ -199,14 +199,9 @@ a:link, a:visited {
     color: white;
 }
 
-#rezerwacja {
-    color: white;
-    margin-top: 5%;
-    margin-bottom: 12%;
-}
-
 h1 {
     font-size: 150%;
+    text-align: center;
 }
 
 header {
@@ -294,14 +289,31 @@ header {
     display: initial;
 }
 
-.prostokat {
+#prostokat {
     color: white;
-    background-color: lightblue;
-    position: fixed;
-    font-size: 50px;
+    font-size: 60px;
+    background-color: blue;
     opacity: 95%;
-    width: 70%;
-    height: 70%;
-    left: 5%;
-    top: 5%;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+#tabelka_rezerwacje {
+    width: 100%;
+    border: none;
+}
+
+#rezerwacja {
+    color: white;
+    margin-top: 5%;
+    margin-bottom: 12%;
+    text-align: left;
+}
+
+.rezerwacja-td {
+    border: 0;
+    padding: 0;
 }
