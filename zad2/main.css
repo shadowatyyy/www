@@ -34,13 +34,28 @@ header {
 
 td {
     border: 2px solid white;
-    padding: 5px;
+    padding: 2px;
     border-collapse: collapse;
 }
 
 th {
     border: 2px solid white;
-    padding: 5px;
+    padding: 2px;
+    background-color: #4000ff;
+    border-collapse: collapse;
+}
+
+#opoznienia td {
+    font-size: 11px;
+    border: 2px solid white;
+    padding: 2px;
+    border-collapse: collapse;
+}
+
+#opoznienia th {
+    font-size: 11px;
+    border: 2px solid white;
+    padding: 2px;
     background-color: #4000ff;
     border-collapse: collapse;
 }
