@@ -1,0 +1,341 @@
+body {
+    text-align: center;
+    font-family: sans-serif;
+    max-width: 2880px;
+    background-image: url(https://images.wallpaperscraft.com/image/texture_surface_dark_128260_2560x1440.jpg);
+}
+
+footer {
+    background-color: #4000ff;
+    font-family: sans-serif;
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    bottom: 0px;
+    color: white;
+    grid-area: footer;
+}
+
+header {
+    background-color: #4000ff;
+    color: white;
+    width: 100%;
+    font-size: 100px;
+    text-align: center;
+}
+
+#logo {
+    display: block;
+    width: 15%;
+    margin: auto;
+}
+
+td {
+    border: 2px solid white;
+    padding: 2px;
+    border-collapse: collapse;
+}
+
+th {
+    border: 2px solid white;
+	padding: 2px;
+	border-collapse: collapse;
+}
+
+#opoznienia td {
+    font-size: 11px;
+    border: 2px solid white;
+    padding: 2px;
+    border-collapse: collapse;
+}
+
+#opoznienia th {
+    font-size: 11px;
+    border: 2px solid white;
+    padding: 2px;
+    background-color: #4000ff;
+    border-collapse: collapse;
+}
+
+a {
+    color: white;
+}
+
+#powrot {
+    font-size: 200%;
+}
+
+#tabelka {
+    margin-top: 0;
+    background-color: #4000ff;
+    color: white;
+    font-weight: bold;
+    grid-area: tabelka;
+}
+
+nav {
+    width: 60%;
+    font: 20;
+    margin: auto;
+    background-color: darkblue;
+    margin-bottom: 20px;
+}
+
+.kontener {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    height: 300px;
+}
+
+.miejsce {
+    height: 500px;
+    width: 33%;
+    text-align: center;
+    margin-top: 0%;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#skad {
+    float: left;
+}
+
+#dokad {
+    float: right;
+}
+
+.miasto {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.zdjecie {
+    width: 80%;
+    position: relative;
+}
+
+#pierwszy {
+    color: white;
+    background-color: #4000ff;
+    width: 60%;
+    margin: auto;
+}
+
+#drugi {
+    color: white;
+    background-color: darkblue;
+    width: 80%;
+    margin: auto;
+}
+
+#trzeci {
+    color: white;
+    background-color: darkblue;
+    width: 80%;
+    position: absolute;
+    top: 55%;
+    left: 10%;
+    text-align: center;
+}
+
+#samolot {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+.informacja {
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.pogoda {
+    display: inline-block;
+}
+
+.tresc {
+    color: white;
+    font-size: 30px;
+}
+
+#samolot_zdjecie {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+ol {
+    margin-top: 0px;
+}
+
+.menu, .podmenu {
+    list-style-type: none;
+    font-family: "Arial", Gadget, sans-serif;
+    text-transform: uppercase;
+    text-align: left;
+    padding-left: 24px;
+    text-shadow: -1px -1px 0 blue, 1px -1px 0 blue, -1px 1px 0 blue, 1px 1px 0 blue;
+    font-size: 120%;
+}
+
+.menu {
+    grid-area: menu;
+}
+
+a:link, a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.lekko {
+    background-color: yellow;
+}
+
+.bardzo {
+    background-color: orange;
+}
+
+.odwolany {
+    background-color: red;
+}
+
+#bialy_wiersz {
+    color: white;
+}
+
+h1 {
+    font-size: 150%;
+    text-align: center;
+}
+
+header {
+    grid-area: header;
+}
+
+#opoznienia_rezerwacja {
+    grid-area: opoznienia_rezerwacja;
+}
+
+#opoznienia {
+    grid-area: opoznienia;
+}
+
+#header_logo {
+    grid-area: header_logo;
+    margin: auto;
+}
+
+#grid {
+    width: 100%;
+    height: 100%;
+    display: inline-grid;
+    grid-column-gap: 15px;
+    grid-row-gap: 0;
+    grid-template-columns: 200px 3fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "header_logo header_logo header_logo" "menu tabelka opoznienia" ". tabelka rezerwacja" "footer footer footer";
+}
+
+@media screen and (max-width: 420px) {
+    #grid {
+        width: 100%;
+        height: 100%;
+        display: inline-grid;
+        grid-column-gap: 15px;
+        grid-row-gap: 0;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas: "header_logo" "menu" "tabelka" "opoznienia" "rezerwacja" "footer";
+    }
+    .pogoda {
+        display: none;
+    }
+    .zdjecie {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 421px) and (max-width: 1200px) {
+    #grid {
+        width: 100%;
+        height: 100%;
+        display: inline-grid;
+        grid-column-gap: 15px;
+        grid-row-gap: 0;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas: "header_logo header_logo" "menu ." "tabelka opoznienia" "tabelka rezerwacja" "footer footer";
+    }
+}
+
+#lista {
+    align-items: center;
+    width: 100%;
+}
+
+.osoba {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.osoba:nth-child(odd) {
+    background-color: lightpink;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.popup {
+    background-color: red;
+    position: absolute;
+    left: 60%;
+    top: 80%;
+    display: none;
+}
+
+.osoba:hover .popup {
+    display: initial;
+}
+
+.prostokat {
+    color: white;
+    font-size: 60px;
+    background-color: blue;
+    opacity: 95%;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+.ukryty {
+    display: none;
+}
+
+#tabelka_rezerwacje {
+    width: 100%;
+    border: none;
+}
+
+#rezerwacja {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 12%;
+    text-align: left;
+    grid-area: rezerwacja;
+}
+
+.rezerwacja-td {
+    border: 0;
+    padding: 0;
+}
