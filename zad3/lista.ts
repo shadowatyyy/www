@@ -199,4 +199,3 @@ function klikniecieSubmit() {
 
 poczekajNaWybor();
 klikniecieSubmit();
-const date = document.querySelector('input[type=date]') as HTMLInputElement;
