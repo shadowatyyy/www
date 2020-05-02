@@ -75,7 +75,7 @@ describe('niepoprawny formularz', () => {
 		const poleNazwisko = await driver.find('input[name=nazwisko]');
 		skad.sendKeys('la');
 		dokad.sendKeys('krakow');
-		data.sendKeys(przeszlosc);
+		data.sendKeys(przyszlosc);
 		poleImie.sendKeys('');
 		poleNazwisko.sendKeys(nazwisko);
 		expect(await (await driver.find('input[type=submit]')).isDisplayed()).to.equal(false);
@@ -89,8 +89,8 @@ describe('niepoprawny formularz', () => {
 		const poleImie = await driver.find('input[name=nazwisko]');
 		const poleNazwisko = await driver.find('input[name=nazwisko]');
 		skad.sendKeys('la');
-		dokad.sendKeys('krakow');
-		data.sendKeys(przeszlosc);
+		dokad.sendKeys('');
+		data.sendKeys(przyszlosc);
 		poleImie.sendKeys(imie);
 		poleNazwisko.sendKeys(nazwisko);
 		expect(await (await driver.find('input[type=submit]')).isDisplayed()).to.equal(false);

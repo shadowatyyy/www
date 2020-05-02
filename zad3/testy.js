@@ -162,7 +162,7 @@ describe('niepoprawny formularz', function () {
                     poleNazwisko = _b.sent();
                     skad.sendKeys('la');
                     dokad.sendKeys('krakow');
-                    data.sendKeys(przeszlosc);
+                    data.sendKeys(przyszlosc);
                     poleImie.sendKeys('');
                     poleNazwisko.sendKeys(nazwisko);
                     _a = chai_1.expect;
@@ -197,8 +197,8 @@ describe('niepoprawny formularz', function () {
                 case 6:
                     poleNazwisko = _b.sent();
                     skad.sendKeys('la');
-                    dokad.sendKeys('krakow');
-                    data.sendKeys(przeszlosc);
+                    dokad.sendKeys('');
+                    data.sendKeys(przyszlosc);
                     poleImie.sendKeys(imie);
                     poleNazwisko.sendKeys(nazwisko);
                     _a = chai_1.expect;

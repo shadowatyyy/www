@@ -219,4 +219,3 @@ function klikniecieSubmit() {
 }
 poczekajNaWybor();
 klikniecieSubmit();
-var date = document.querySelector('input[type=date]');
