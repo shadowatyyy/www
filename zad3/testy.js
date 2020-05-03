@@ -63,148 +63,156 @@ describe("Fibonacci", function () {
 var plik = "file://" + process.cwd() + "/lista.html";
 var przeszlosc = '2000-01-01';
 var przyszlosc = '2030-06-07';
-var imie = 'Tadeusz';
-var nazwisko = 'Sznuk';
+var tadeusz = 'Tadeusz';
+var sznuk = 'Sznuk';
+var la = 'la';
+var krakow = 'krakow';
+function wypelnijFormularz(skad, dokad, data, imie, nazwisko) {
+    return __awaiter(this, void 0, void 0, function () {
+        var poleSkad, poleDokad, poleData, poleImie, poleNazwisko;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, mocha_webdriver_1.driver.find('select[id=start]')];
+                case 1:
+                    poleSkad = _a.sent();
+                    return [4 /*yield*/, mocha_webdriver_1.driver.find('select[id=destination]')];
+                case 2:
+                    poleDokad = _a.sent();
+                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[type=date]')];
+                case 3:
+                    poleData = _a.sent();
+                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[name=imie]')];
+                case 4:
+                    poleImie = _a.sent();
+                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[name=nazwisko]')];
+                case 5:
+                    poleNazwisko = _a.sent();
+                    poleSkad.sendKeys(skad);
+                    poleDokad.sendKeys(dokad);
+                    poleData.sendKeys(data);
+                    poleImie.sendKeys(imie);
+                    poleNazwisko.sendKeys(nazwisko);
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
 describe('niepoprawny formularz', function () {
     it('bez wpisanej daty', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var skad, dokad, data, poleImie, poleNazwisko, _a;
+        var _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0: return [4 /*yield*/, mocha_webdriver_1.driver.get(plik)];
                 case 1:
                     _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('select[id=start]')];
+                    return [4 /*yield*/, wypelnijFormularz(la, krakow, '', tadeusz, sznuk)];
                 case 2:
-                    skad = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('select[id=destination]')];
-                case 3:
-                    dokad = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[type=date]')];
-                case 4:
-                    data = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[name=imie]')];
-                case 5:
-                    poleImie = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[name=nazwisko]')];
-                case 6:
-                    poleNazwisko = _b.sent();
-                    skad.sendKeys('la');
-                    dokad.sendKeys('krakow');
-                    data.sendKeys('');
-                    poleImie.sendKeys(imie);
-                    poleNazwisko.sendKeys(nazwisko);
+                    _b.sent();
                     _a = chai_1.expect;
                     return [4 /*yield*/, mocha_webdriver_1.driver.find('input[type=submit]')];
-                case 7: return [4 /*yield*/, (_b.sent()).isDisplayed()];
-                case 8:
+                case 3: return [4 /*yield*/, (_b.sent()).isEnabled()];
+                case 4:
                     _a.apply(void 0, [_b.sent()]).to.equal(false);
                     return [2 /*return*/];
             }
         });
     }); });
     it('data w przeszlosci', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var skad, dokad, data, poleImie, poleNazwisko, _a;
+        var _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0: return [4 /*yield*/, mocha_webdriver_1.driver.get(plik)];
                 case 1:
                     _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('select[id=start]')];
+                    return [4 /*yield*/, wypelnijFormularz(la, krakow, przeszlosc, tadeusz, sznuk)];
                 case 2:
-                    skad = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('select[id=destination]')];
-                case 3:
-                    dokad = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[type=date]')];
-                case 4:
-                    data = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[name=imie]')];
-                case 5:
-                    poleImie = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[name=nazwisko]')];
-                case 6:
-                    poleNazwisko = _b.sent();
-                    skad.sendKeys('la');
-                    dokad.sendKeys('krakow');
-                    data.sendKeys(przeszlosc);
-                    poleImie.sendKeys(imie);
-                    poleNazwisko.sendKeys(nazwisko);
+                    _b.sent();
                     _a = chai_1.expect;
                     return [4 /*yield*/, mocha_webdriver_1.driver.find('input[type=submit]')];
-                case 7: return [4 /*yield*/, (_b.sent()).isDisplayed()];
-                case 8:
+                case 3: return [4 /*yield*/, (_b.sent()).isEnabled()];
+                case 4:
                     _a.apply(void 0, [_b.sent()]).to.equal(false);
                     return [2 /*return*/];
             }
         });
     }); });
     it('bez imienia', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var skad, dokad, data, poleImie, poleNazwisko, _a;
+        var _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0: return [4 /*yield*/, mocha_webdriver_1.driver.get(plik)];
                 case 1:
                     _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('select[id=start]')];
+                    return [4 /*yield*/, wypelnijFormularz(la, krakow, przyszlosc, '', sznuk)];
                 case 2:
-                    skad = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('select[id=destination]')];
-                case 3:
-                    dokad = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[type=date]')];
-                case 4:
-                    data = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[name=imie]')];
-                case 5:
-                    poleImie = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[name=nazwisko]')];
-                case 6:
-                    poleNazwisko = _b.sent();
-                    skad.sendKeys('la');
-                    dokad.sendKeys('krakow');
-                    data.sendKeys(przyszlosc);
-                    poleImie.sendKeys('');
-                    poleNazwisko.sendKeys(nazwisko);
+                    _b.sent();
                     _a = chai_1.expect;
                     return [4 /*yield*/, mocha_webdriver_1.driver.find('input[type=submit]')];
-                case 7: return [4 /*yield*/, (_b.sent()).isDisplayed()];
-                case 8:
+                case 3: return [4 /*yield*/, (_b.sent()).isEnabled()];
+                case 4:
+                    _a.apply(void 0, [_b.sent()]).to.equal(false);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('nazwisko to spacje', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, mocha_webdriver_1.driver.get(plik)];
+                case 1:
+                    _b.sent();
+                    return [4 /*yield*/, wypelnijFormularz(la, krakow, przyszlosc, tadeusz, '   ')];
+                case 2:
+                    _b.sent();
+                    _a = chai_1.expect;
+                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[type=submit]')];
+                case 3: return [4 /*yield*/, (_b.sent()).isEnabled()];
+                case 4:
                     _a.apply(void 0, [_b.sent()]).to.equal(false);
                     return [2 /*return*/];
             }
         });
     }); });
     it('bez celu podrozy', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var skad, dokad, data, poleImie, poleNazwisko, _a;
+        var _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0: return [4 /*yield*/, mocha_webdriver_1.driver.get(plik)];
                 case 1:
                     _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('select[id=start]')];
+                    return [4 /*yield*/, wypelnijFormularz(la, '', przyszlosc, tadeusz, sznuk)];
                 case 2:
-                    skad = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('select[id=destination]')];
-                case 3:
-                    dokad = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[type=date]')];
-                case 4:
-                    data = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[name=nazwisko]')];
-                case 5:
-                    poleImie = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[name=nazwisko]')];
-                case 6:
-                    poleNazwisko = _b.sent();
-                    skad.sendKeys('la');
-                    dokad.sendKeys('');
-                    data.sendKeys(przyszlosc);
-                    poleImie.sendKeys(imie);
-                    poleNazwisko.sendKeys(nazwisko);
+                    _b.sent();
                     _a = chai_1.expect;
                     return [4 /*yield*/, mocha_webdriver_1.driver.find('input[type=submit]')];
-                case 7: return [4 /*yield*/, (_b.sent()).isDisplayed()];
-                case 8:
+                case 3: return [4 /*yield*/, (_b.sent()).isEnabled()];
+                case 4:
+                    _a.apply(void 0, [_b.sent()]).to.equal(false);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('usuniecie imienia', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var poleImie, _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, mocha_webdriver_1.driver.get(plik)];
+                case 1:
+                    _b.sent();
+                    return [4 /*yield*/, wypelnijFormularz(la, krakow, przyszlosc, tadeusz, sznuk)];
+                case 2:
+                    _b.sent();
+                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[name=imie]')];
+                case 3:
+                    poleImie = _b.sent();
+                    return [4 /*yield*/, poleImie.clear()];
+                case 4:
+                    _b.sent();
+                    _a = chai_1.expect;
+                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[type=submit]')];
+                case 5: return [4 /*yield*/, (_b.sent()).isEnabled()];
+                case 6:
                     _a.apply(void 0, [_b.sent()]).to.equal(false);
                     return [2 /*return*/];
             }
@@ -213,37 +221,75 @@ describe('niepoprawny formularz', function () {
 });
 describe('poprawny formularz', function () {
     it('wypelniony formularz', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var skad, dokad, data, poleImie, poleNazwisko, _a;
+        var _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0: return [4 /*yield*/, mocha_webdriver_1.driver.get(plik)];
                 case 1:
                     _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('select[id=start]')];
+                    return [4 /*yield*/, wypelnijFormularz(la, krakow, przyszlosc, tadeusz, sznuk)];
                 case 2:
-                    skad = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('select[id=destination]')];
-                case 3:
-                    dokad = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[type=date]')];
-                case 4:
-                    data = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[name=imie]')];
-                case 5:
-                    poleImie = _b.sent();
-                    return [4 /*yield*/, mocha_webdriver_1.driver.find('input[name=nazwisko]')];
-                case 6:
-                    poleNazwisko = _b.sent();
-                    skad.sendKeys('la');
-                    dokad.sendKeys('krakow');
-                    data.sendKeys(przyszlosc);
-                    poleImie.sendKeys(imie);
-                    poleNazwisko.sendKeys(nazwisko);
+                    _b.sent();
                     _a = chai_1.expect;
                     return [4 /*yield*/, mocha_webdriver_1.driver.find('input[type=submit]')];
-                case 7: return [4 /*yield*/, (_b.sent()).isDisplayed()];
-                case 8:
+                case 3: return [4 /*yield*/, (_b.sent()).isEnabled()];
+                case 4:
                     _a.apply(void 0, [_b.sent()]).to.equal(true);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('klikniety formularz', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var submit, komunikat, _a, _b;
+        return __generator(this, function (_c) {
+            switch (_c.label) {
+                case 0: return [4 /*yield*/, mocha_webdriver_1.driver.get(plik)];
+                case 1:
+                    _c.sent();
+                    return [4 /*yield*/, wypelnijFormularz(la, krakow, przyszlosc, tadeusz, sznuk)];
+                case 2:
+                    _c.sent();
+                    submit = mocha_webdriver_1.driver.find('input[type=submit]');
+                    return [4 /*yield*/, submit.doClick()];
+                case 3:
+                    _c.sent();
+                    return [4 /*yield*/, mocha_webdriver_1.driver.find('.prostokat')];
+                case 4:
+                    komunikat = _c.sent();
+                    _a = chai_1.expect;
+                    return [4 /*yield*/, komunikat.isDisplayed()];
+                case 5:
+                    _a.apply(void 0, [_c.sent()]).to.equal(true);
+                    _b = chai_1.expect;
+                    return [4 /*yield*/, komunikat.getText()];
+                case 6:
+                    _b.apply(void 0, [_c.sent()]).to.equal('Zarezerwowano lot ' +
+                        ("Pasazer: " + tadeusz + " " + sznuk + " ") +
+                        ("Skad: " + la + " ") +
+                        ("Dokad: " + krakow + " ") +
+                        ("Kiedy: " + przyszlosc));
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('zakryty link', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var submit, _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, mocha_webdriver_1.driver.get(plik)];
+                case 1:
+                    _b.sent();
+                    return [4 /*yield*/, wypelnijFormularz(la, krakow, przyszlosc, tadeusz, sznuk)];
+                case 2:
+                    _b.sent();
+                    submit = mocha_webdriver_1.driver.find('input[type=submit]');
+                    return [4 /*yield*/, submit.doClick()];
+                case 3:
+                    _b.sent();
+                    _a = chai_1.expect;
+                    return [4 /*yield*/, mocha_webdriver_1.driver.find('a').click().then(function () { return true; }, function () { return false; })];
+                case 4:
+                    _a.apply(void 0, [_b.sent()]).to.equal(false);
                     return [2 /*return*/];
             }
         });

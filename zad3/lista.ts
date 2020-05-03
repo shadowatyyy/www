@@ -1,11 +1,11 @@
 function ukryjSubmit() {
 	const submit = document.querySelector('input[type=submit]') as HTMLInputElement;
-	submit.style.display = 'none';
+	submit.disabled = true;
 }
 
 function pokazSubmit() {
 	const submit = document.querySelector('input[type=submit]') as HTMLInputElement;
-	submit.style.display = 'block';
+	submit.disabled = false;
 }
 
 function wypiszImie() {
@@ -141,42 +141,32 @@ const wpisanaData = document.querySelector('input[type=date]') as HTMLInputEleme
 const imie = document.querySelector('input[id=imie]') as HTMLInputElement;
 const nazwisko = document.querySelector('input[id=nazwisko]') as HTMLInputElement;
 
+function sprawdzSlowo(slowo: string) : boolean {
+	const len = slowo.length;
+	for (let i = 0; i < len; i++) {
+		if (slowo[i] !== ' ')
+			return true;
+	}
+	return false;
+}
+
 function sprawdzFormularz() {
 	const dzis = new Date();
 	dzis.setHours(0, 0, 0, 0);
 	const data = new Date(wpisanaData.value);
 	data.setHours(0, 0, 0, 0);
 
-	let ok = true;
-
-	if (wpisanaData.value.length === 0)
-		ok = false;
-
-	if (skad.value === 'wybierz')
-		ok = false;
-
-	if (dokad.value === 'wybierz')
-		ok = false;
-
-	if (data < dzis)
-		ok = false;
-
-	if (imie.value.length === 0)
-		ok = false;
-
-	if (nazwisko.value.length === 0)
-		ok = false;
-
-	if (ok)
-		pokazSubmit();
-	else
+	if (wpisanaData.value.length === 0 || skad.value === 'wybierz' || dokad.value === 'wybierz' ||
+		data < dzis || !sprawdzSlowo(imie.value) || !sprawdzSlowo(nazwisko.value))
 		ukryjSubmit();
+	else
+		pokazSubmit();
 }
 
 // zadanie 7 czesc 5
 function poczekajNaWybor() {
 	ukryjSubmit();
-	rezerwacja.addEventListener('input', sprawdzFormularz);
+	rezerwacja.addEventListener('change', sprawdzFormularz);
 }
 
 const pokazWpisane = (klik: Event) : void => {

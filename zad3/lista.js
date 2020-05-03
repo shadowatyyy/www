@@ -36,11 +36,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 function ukryjSubmit() {
     var submit = document.querySelector('input[type=submit]');
-    submit.style.display = 'none';
+    submit.disabled = true;
 }
 function pokazSubmit() {
     var submit = document.querySelector('input[type=submit]');
-    submit.style.display = 'block';
+    submit.disabled = false;
 }
 function wypiszImie() {
     console.log(imie.value);
@@ -174,33 +174,29 @@ var dokad = document.querySelector('select[id=destination]');
 var wpisanaData = document.querySelector('input[type=date]');
 var imie = document.querySelector('input[id=imie]');
 var nazwisko = document.querySelector('input[id=nazwisko]');
+function sprawdzSlowo(slowo) {
+    var len = slowo.length;
+    for (var i = 0; i < len; i++) {
+        if (slowo[i] !== ' ')
+            return true;
+    }
+    return false;
+}
 function sprawdzFormularz() {
     var dzis = new Date();
     dzis.setHours(0, 0, 0, 0);
     var data = new Date(wpisanaData.value);
     data.setHours(0, 0, 0, 0);
-    var ok = true;
-    if (wpisanaData.value.length === 0)
-        ok = false;
-    if (skad.value === 'wybierz')
-        ok = false;
-    if (dokad.value === 'wybierz')
-        ok = false;
-    if (data < dzis)
-        ok = false;
-    if (imie.value.length === 0)
-        ok = false;
-    if (nazwisko.value.length === 0)
-        ok = false;
-    if (ok)
-        pokazSubmit();
-    else
+    if (wpisanaData.value.length === 0 || skad.value === 'wybierz' || dokad.value === 'wybierz' ||
+        data < dzis || !sprawdzSlowo(imie.value) || !sprawdzSlowo(nazwisko.value))
         ukryjSubmit();
+    else
+        pokazSubmit();
 }
 // zadanie 7 czesc 5
 function poczekajNaWybor() {
     ukryjSubmit();
-    rezerwacja.addEventListener('input', sprawdzFormularz);
+    rezerwacja.addEventListener('change', sprawdzFormularz);
 }
 var pokazWpisane = function (klik) {
     klik.preventDefault();
