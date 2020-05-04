@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body>
+	<header class="flex-child">Bardzo nieestetyczny quiz</header>
+	<section id="intro" class="flex-child">Zarządzanie czasem jest ważne</section>
+
+	<section id="start_screen" class="flex-child">
+		<input type="submit" class="button" value="Start quiz">
+		<input type="submit" class="button" value="Best scores">
+	</section>
+
+	<section id="main_screen" class="flex-child">
+		<section id="timer" class="flex-child" >0</section>
+		<section id="question" class="flex-child">
+			<section id="statement">
+				2+2=
+			</section>
+			<input type="text">
+		</section>
+		<section class="button_flexbox flex-child">
+			<input type="submit" class="button" value="Previous">
+			<input type="submit" class="button" value="Next">
+			<input type="submit" class="button" value="Finish">
+			<input type="submit" class="button" value="Cancel">
+		</section>
+	</section>
+
+	<section id="end_screen" class="flex-child">
+		<section id="scoring">
+			Time: 12.3
+			Penalty: 3
+			Total: 15.3
+		</section>
+		<section class="button_flexbox">
+			<input type="submit" class="button" value="Save score">
+			<input type="submit" class="button" value="Save with stats">
+		</section>
+	</section>
+
+	<section id="scores_screen" class="flex-child">
+		<table id="scores_table">
+			<tr>
+                <th>Score</th>
+                <th>Time</th>
+                <th>Penalty</th>
+			</tr>
+            <!-- <tr>
+                <td>1</td>
+                <td>0.5</td>
+                <td>0.5</td>
+			</tr> -->
+		</table>
+		<input type="submit" class="button" value="Return">
+	</section>
+
+	<script src='main.js'></script>
+</body>
+</html>
