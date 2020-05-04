@@ -27,7 +27,7 @@ header {
 
 #intro {
 	display: flex;
-	justify-content: center; /* align horizontal */
+	justify-content: center;
 	align-items: center; 
 	flex: 1;
 }
@@ -53,7 +53,7 @@ header {
 	display: flex;
 	width: 100%;
 	align-items: center; 
-	justify-content: space-around; /* align horizontal */
+	justify-content: space-around;
 }
 
 #start_screen {
