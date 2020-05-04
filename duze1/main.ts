@@ -9,7 +9,7 @@ let jsonString = '[{"statement":"2+2","answer":"4","penalty":10},' +
 '{"statement":"8 xor 4","answer":"12","penalty":6},' +
 '{"statement":"5-12","answer":"-7","penalty":7},' +
 '{"statement":"14*19","answer":"266","penalty":2},' +
-'{"statement":"11^11","answer":"121","penalty":5}]';
+'{"statement":"11*11","answer":"121","penalty":5}]';
 
 let StartScreen = document.querySelector('#start_screen') as HTMLElement;
 let MainScreen = document.querySelector('#main_screen') as HTMLElement;
