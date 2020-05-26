@@ -116,3 +116,9 @@ input[type="text"] {
 	width: 210px;
 	color: #cd9dcd;
 }
+
+@media screen and (min-width: 1px) and (max-width: 400px) {
+	#question {
+		flex-direction: column;
+	}
+}

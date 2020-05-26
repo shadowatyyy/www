@@ -61,31 +61,31 @@ class Quiz {
 		this.showQuestion();
 	}
 
-	getTimeArray = () => {
+	getTimeArray(): number[] {
 		return [...this.time];
 	}
 
-	getQuestions = () => {
+	getQuestions(): Question[] {
 		return [...this.questions];
 	}
 
-	getAnswers = () => {
+	getAnswers(): string[] {
 		return [...this.answers];
 	}
 
-	finish = () => {
+	finish(): void {
 		this.saveTimeInterval();
 		this.finishMoment = Date.now();
 	}
  
-	saveTimeInterval = () => {
-		const now = Date.now();
+	saveTimeInterval(): void {
+		const now: number = Date.now();
 		this.time[this.currentQuestion] += now - this.lastSwitch;
 		this.lastSwitch = now;
 	}
 
-	getTotalPenalty = () => {
-		let penalty = 0;
+	getTotalPenalty(): number {
+		let penalty: number = 0;
 		for (let i = 0; i < this.answers.length; i++) {
 			if (this.answers[i] != this.questions[i].answer)
 				penalty += this.questions[i].penalty;
@@ -93,15 +93,15 @@ class Quiz {
 		return penalty;
 	}
 
-	getTotalTime = () => {
+	getTotalTime(): number {
 		return this.finishMoment - this.startMoment;
 	}
 
-	getTimeElapsed = () => {
+	getTimeElapsed(): number {
 		return Date.now() - this.startMoment;
 	}
 
-	showScore = () => {
+	showScore(): void {
 		const time = this.getTimeElapsed();
 		const penalty = this.getTotalPenalty();
 		const score = time + 1000 * penalty;
@@ -110,11 +110,11 @@ class Quiz {
 			`Score: ${timeToDisplay(score)}\n`;
 	}
 
-	refreshTimer = () => {
+	refreshTimer(): void {
 		Timer.textContent = timeToDisplay(this.getTimeElapsed());
 	}
 
-	showQuestion = () => {
+	showQuestion(): void {
 		Statement.textContent = this.questions[this.currentQuestion].statement;
 		Answer.value = this.answers[this.currentQuestion];
 
@@ -129,19 +129,19 @@ class Quiz {
 			enableButton(NextButton);
 	}
 
-	nextQuestion = () => {
+	nextQuestion(): void {
 		this.saveTimeInterval();
 		this.currentQuestion++;
 		this.showQuestion();
 	}
 
-	previousQuestion = () => {
+	previousQuestion(): void {
 		this.saveTimeInterval();
 		this.currentQuestion--;
 		this.showQuestion();
 	}
 
-	checkCompleted = () => {
+	checkCompleted(): void {
 		for (let i = 0; i < this.questions.length; i++) {
 			if (!this.answers[i].length) {
 				disableButton(FinishButton);
@@ -151,29 +151,27 @@ class Quiz {
 		enableButton(FinishButton);
 	}
 	
-	saveAnswer = () => {
+	saveAnswer(): void {
 		this.answers[this.currentQuestion] = Answer.value;
 		this.checkCompleted();
 	}
 
-	saveToLocalStorage = (result: QuizResult) => {
-		const key = 'results';
-		if (localStorage.getItem(key) === null) {
-			let value = new Array(result);
-			localStorage.setItem(key, JSON.stringify(value));
-		} else {
-			let value: QuizResult[] = JSON.parse(localStorage.getItem(key));
-			value.push(result);
-			localStorage.setItem(key, JSON.stringify(value));
-		}
+	saveToLocalStorage(result: QuizResult): void {
+		let randomKey: number = -1;
+		
+		do {
+			randomKey = Math.floor(Math.random() * 1e9);
+		} while (localStorage.getItem(randomKey.toString()) != null)
+
+		localStorage.setItem(("quiz result" + randomKey.toString()), JSON.stringify(result))
 	}
 
-	saveScore = () => {
+	saveScore(): void {
 		this.saveToLocalStorage(new QuizResult(this, false));
 		reloadPage();
 	}
 
-	saveWithStats = () => {
+	saveWithStats(): void {
 		this.saveToLocalStorage(new QuizResult(this, true));
 		reloadPage();
 	}	
@@ -208,68 +206,76 @@ class QuizResult {
 	}
 }
 
-function timeToDisplay(ms: number) {
+function timeToDisplay(ms: number): string {
 	const sec = Math.floor(ms / 1000);
 	const tensOfSec = Math.floor(ms / 100 - 10 * sec);
 	return sec + '.' + tensOfSec;
 }
 
-function printScores() {
-	const key = 'results';
-	let value: QuizResult[] = JSON.parse(localStorage.getItem(key));
-	value.sort((q1, q2) => q1.score - q2.score);
+function printScores(): void {
+	let results: QuizResult[] = new Array();
+
+	for (let i = 0; i < localStorage.length; i++) {
+		const key = localStorage.key(i);
+		if (key != null && key.startsWith("quiz result")) {
+			const value = localStorage.getItem(key);
+			results.push(JSON.parse(value));
+		}
+	}
+
+	results.sort((q1, q2) => q1.score - q2.score);
 	
-	while (value.length > 10)
-		value.pop();
+	while (results.length > 10)
+		results.pop();
 	
-	for (let i = 0; i < value.length; i++) {
+	for (let i = 0; i < results.length; i++) {
 		let row: HTMLTableRowElement = ScoresTable.insertRow(-1);
 		let scoreCell: HTMLTableCellElement = row.insertCell(-1);
-		scoreCell.textContent = timeToDisplay(value[i].score);
+		scoreCell.textContent = timeToDisplay(results[i].score);
 		let timeCell: HTMLTableCellElement = row.insertCell(-1);
-		timeCell.textContent = timeToDisplay(value[i].time);
+		timeCell.textContent = timeToDisplay(results[i].time);
 		let penaltyCell: HTMLTableCellElement = row.insertCell(-1);
-		penaltyCell.textContent = value[i].penalty.toString();
+		penaltyCell.textContent = results[i].penalty.toString();
 	}
 }
 
 let currentQuiz: Quiz = null;
 
-function showScreen(screen: HTMLElement) {
+function showScreen(screen: HTMLElement): void {
 	screen.style.display = 'flex';
 }
 
-function hideScreen(screen: HTMLElement) {
+function hideScreen(screen: HTMLElement): void {
 	screen.style.display = 'none';
 }
 
-function disableButton(button: HTMLInputElement) {
+function disableButton(button: HTMLInputElement): void {
 	button.disabled = true;
 }
 
-function enableButton(button: HTMLInputElement) {
+function enableButton(button: HTMLInputElement): void {
 	button.disabled = false;
 }
 
-function hideAllScreens() {
+function hideAllScreens(): void {
 	hideScreen(MainScreen);
 	hideScreen(StartScreen);
 	hideScreen(EndScreen);
 	hideScreen(ScoresScreen);
 }
 
-function reloadPage() {
+function reloadPage(): void {
 	window.location.reload();
 }
 
-function finishQuiz() {
+function finishQuiz(): void {
 	hideScreen(MainScreen);
 	showScreen(EndScreen);
 	currentQuiz.finish();
 	currentQuiz.showScore();
 }
 
-function startQuiz() {
+function startQuiz(): void {
 	currentQuiz = new Quiz(jsonString);
 	NextButton.addEventListener('click', currentQuiz.nextQuestion);
 	PreviousButton.addEventListener('click', currentQuiz.previousQuestion);
@@ -280,22 +286,22 @@ function startQuiz() {
 	SaveWithStatsButton.addEventListener('click', currentQuiz.saveWithStats);
 }
 
-function showScores() {
+function showScores(): void {
 	hideScreen(StartScreen);
 	showScreen(ScoresScreen);
 	printScores();
 }
 
-function addStartEvent() {
+function addStartEvent(): void {
 	StartButton.addEventListener('click', startQuiz);
 }
 
-function addScoresEvent() {
+function addScoresEvent(): void {
 	ScoresButton.addEventListener('click', showScores);
 	ReturnButton.addEventListener('click', reloadPage);
 }
 
-function main() {
+function main(): void {
 	hideAllScreens();
 	showScreen(StartScreen);
 	addStartEvent();
