@@ -97,20 +97,20 @@ class Quiz {
 		return this.finishMoment - this.startMoment;
 	}
 
-	getTimeElapsed(): number {
+	getTimeElapsed() {
 		return Date.now() - this.startMoment;
 	}
 
 	showScore(): void {
-		const time = this.getTimeElapsed();
-		const penalty = this.getTotalPenalty();
-		const score = time + 1000 * penalty;
+		const time: number = this.getTimeElapsed();
+		const penalty: number = this.getTotalPenalty();
+		const score: number = time + 1000 * penalty;
 		Scoring.textContent = `Time: ${timeToDisplay(time)}\n` +
 			`Penalty: ${penalty}\n` +
 			`Score: ${timeToDisplay(score)}\n`;
 	}
 
-	refreshTimer(): void {
+	refreshTimer = () => {
 		Timer.textContent = timeToDisplay(this.getTimeElapsed());
 	}
 
@@ -129,13 +129,13 @@ class Quiz {
 			enableButton(NextButton);
 	}
 
-	nextQuestion(): void {
+	nextQuestion = () => {
 		this.saveTimeInterval();
 		this.currentQuestion++;
 		this.showQuestion();
 	}
 
-	previousQuestion(): void {
+	previousQuestion = () => {
 		this.saveTimeInterval();
 		this.currentQuestion--;
 		this.showQuestion();
@@ -151,12 +151,12 @@ class Quiz {
 		enableButton(FinishButton);
 	}
 	
-	saveAnswer(): void {
+	saveAnswer = () => {
 		this.answers[this.currentQuestion] = Answer.value;
 		this.checkCompleted();
 	}
 
-	saveToLocalStorage(result: QuizResult): void {
+	saveToLocalStorage = (result: QuizResult) => {
 		let randomKey: number = -1;
 		
 		do {
@@ -166,12 +166,12 @@ class Quiz {
 		localStorage.setItem(("quiz result" + randomKey.toString()), JSON.stringify(result))
 	}
 
-	saveScore(): void {
+	saveScore = () => {
 		this.saveToLocalStorage(new QuizResult(this, false));
 		reloadPage();
 	}
 
-	saveWithStats(): void {
+	saveWithStats = () => {
 		this.saveToLocalStorage(new QuizResult(this, true));
 		reloadPage();
 	}	
