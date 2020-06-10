@@ -1,6 +1,7 @@
 import {expect} from "chai";
 import "mocha";
-import {Meme, MemeList} from "../public/meme";
+import {Meme} from "../public/meme";
+import {MemeList} from "../public/memelist";
 
 describe("meme class", () => {
 	const name : string = "NAME";

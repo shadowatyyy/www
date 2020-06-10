@@ -9,7 +9,8 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-import {Meme, MemeList} from "./public/meme";
+import {Meme} from "./public/meme";
+import {MemeList} from "./public/memelist";
 
 let memeList : MemeList = new MemeList();
 
