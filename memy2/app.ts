@@ -69,8 +69,8 @@ app.post('/meme/:memeId', antiCsrf, async function (req : express.Request, res :
     if (isNaN(req.body.price))
         next(createError(400));
 
-    await updatePrice(res.locals.db, parseInt(req.params.memeId), parseInt(req.params.memePrice));
-    res.render('meme', { meme: getMeme(res.locals.db, parseInt(req.params.memeId)), token: req.csrfToken()})
+    await updatePrice(res.locals.db, parseInt(req.params.memeId), parseInt(req.body.price));
+    res.render('meme', { meme: await getMeme(res.locals.db, parseInt(req.params.memeId)), token: req.csrfToken()})
 })
 
 app.get("/login", antiCsrf, function(req : express.Request, res : express.Response) {

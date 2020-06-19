@@ -88,8 +88,9 @@ export function changePrice(db : sqlite.Database, meme : Meme, price : number) :
 }
 
 export async function updatePrice(db : sqlite.Database, id : number, price : number) : Promise<void> {
+	console.log(id, price);
 	await beginTransaction(db);
-	getMeme(db, id)
+	await getMeme(db, id)
 	.then((meme : Meme) => {
 		meme.changePrice(price);
 		return meme;
