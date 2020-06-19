@@ -35,9 +35,9 @@ async function init() : Promise<void> {
     await queryRun(db, "CREATE TABLE IF NOT EXISTS memes (id INTEGER PRIMARY KEY, name TEXT, url TEXT, history TEXT);", []);
     await queryRun(db, "CREATE TABLE IF NOT EXISTS users (login TEXT PRIMARY KEY, password TEXT);", []);
     
-    await addMeme(db, createMeme('Gold', 'https://i.redd.it/h7rplf9jt8y21.png', 1000));
-    await addMeme(db, createMeme('Platinum', 'http://www.quickmeme.com/img/90/90d3d6f6d527a64001b79f4e13bc61912842d4a5876d17c1f011ee519d69b469.jpg', 1100));
-    await addMeme(db, createMeme('Elite', 'https://i.imgflip.com/30zz5g.jpg', 1200));
+    await addMeme(db, createMeme('Gold', 'https://i.redd.it/h7rplf9jt8y21.png', 1000, "init"));
+    await addMeme(db, createMeme('Platinum', 'http://www.quickmeme.com/img/90/90d3d6f6d527a64001b79f4e13bc61912842d4a5876d17c1f011ee519d69b469.jpg', 1100, "init"));
+    await addMeme(db, createMeme('Elite', 'https://i.imgflip.com/30zz5g.jpg', 1200, "init"));
 
     await addUser(db, 'admin', 'admin');
     await addUser(db, 'user', 'user');
@@ -69,7 +69,13 @@ app.post('/meme/:memeId', antiCsrf, async function (req : express.Request, res :
     if (isNaN(req.body.price))
         next(createError(400));
 
-    await updatePrice(res.locals.db, parseInt(req.params.memeId), parseInt(req.body.price));
+    if (isNaN(parseInt(req.params.memeId)))
+        next(createError(400));
+
+    if (getMeme(res.locals.db, parseInt(req.params.memeId)) == null)
+        next(createError(400));
+
+    await updatePrice(res.locals.db, parseInt(req.params.memeId), req.body.price, req.session!.login);
     res.render('meme', { meme: await getMeme(res.locals.db, parseInt(req.params.memeId)), token: req.csrfToken()})
 })
 

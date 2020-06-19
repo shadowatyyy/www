@@ -5,14 +5,14 @@ export class Meme {
 	url: string;
 	name: string;
 	id: number;
-	history: number[];
+	history: [number, string][];
 	static nextId: number = 0;
 	
 	constructor(id : number, name : string, url : string, historyString : string) {
 		this.url = url;
 		this.name = name;
 		this.id = id;
-		this.history = JSON.parse(historyString)
+		this.history = JSON.parse(historyString);
 	}
   
 	getId() : number {
@@ -20,10 +20,10 @@ export class Meme {
 	}
   
 	getPrice() : number {
-		return this.history[this.history.length - 1];
+		return this.history[this.history.length - 1][0];
 	}
   
-	getHistory() : number[] {
+	getHistory() : [number, string][] {
 		return this.history;
 	}
 
@@ -39,13 +39,13 @@ export class Meme {
 		return this.name;
 	}
   
-	changePrice(price : number) : void {
-		this.history.push(price);
+	changePrice(price : number, login : string) : void {
+		this.history.push([price, login]);
 	}
 }
 
-export function createMeme(name : string, url : string, price : number) : Meme {
-	return new Meme(Meme.nextId++, name, url, JSON.stringify([price]));
+export function createMeme(name : string, url : string, price : number, login : string) : Meme {
+	return new Meme(Meme.nextId++, name, url, JSON.stringify([[price, login]]));
 }
 
 export async function getMeme(db : sqlite.Database, id : number) : Promise<Meme> {
@@ -82,17 +82,16 @@ export function addMeme(db : sqlite.Database, meme : Meme) : Promise<any> {
 		[meme.getId(), meme.getName(), meme.getUrl(), meme.getHistoryString()]);
 }
 
-export function changePrice(db : sqlite.Database, meme : Meme, price : number) : void {
-	meme.changePrice(price);
+export function changePrice(db : sqlite.Database, meme : Meme, price : number, login : string) : void {
+	meme.changePrice(price, login);
 	addMeme(db, meme);
 }
 
-export async function updatePrice(db : sqlite.Database, id : number, price : number) : Promise<void> {
-	console.log(id, price);
+export async function updatePrice(db : sqlite.Database, id : number, price : number, login : string) : Promise<void> {
 	await beginTransaction(db);
 	await getMeme(db, id)
 	.then((meme : Meme) => {
-		meme.changePrice(price);
+		meme.changePrice(price, login);
 		return meme;
 	})
 	.then((meme : Meme) => {
@@ -103,6 +102,6 @@ export async function updatePrice(db : sqlite.Database, id : number, price : num
 	})
 	.catch(() => {
 		rollback(db);
-		updatePrice(db, id, price);
+		updatePrice(db, id, price, login);
 	});
 }
