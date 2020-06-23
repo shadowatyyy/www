@@ -60,4 +60,12 @@ describe("meme list class", () => {
 		expect(expensive[0].getPrice()).to.equal(price3);
 		expect(expensive[1].getPrice()).to.equal(price1);
 	});
+
+	it('most expensive - interesting test', () => {
+		const expensive : Meme[] = list.mostExpensive(7);
+		expect(expensive.length).to.equal(3);
+		expect(expensive[0].getPrice()).to.equal(price3);
+		expect(expensive[1].getPrice()).to.equal(price1);
+		expect(expensive[2].getPrice()).to.equal(price2);
+	});
 });

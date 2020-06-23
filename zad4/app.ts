@@ -1,16 +1,14 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+import createError = require("http-errors");
+import express = require("express");
+import path = require('path');
+import cookieParser = require('cookie-parser');
+import logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-var app = express();
+const app : express.Application = express();
 
 import {Meme} from "./public/meme";
 import {MemeList} from "./public/memelist";
+import { nextTick } from "process";
 
 let memeList : MemeList = new MemeList();
 
@@ -26,31 +24,37 @@ app.get('/', function(req, res) {
   res.render('index', { title: 'Meme market', message: 'Hello there!', memes: toDisplay })
 });
 
-app.get('/meme/:memeId', function (req, res) {
+app.get('/meme/:memeId', function (req, res, next) {
+  let id : number = parseInt(req.params.memeId);
+
+  if (isNaN(id) || 0 > id || id >= Meme.nextId)
+    next(createError(404));
+
   let meme : Meme = memeList.getMeme(req.params.memeId);
   res.render('meme', { meme: meme })
 })
 
 app.use(express.urlencoded({
   extended: true
-  })); 
-  app.post('/meme/:memeId', function (req, res) {
-     let meme : Meme = memeList.getMeme(req.params.memeId);
-     let price : number = req.body.price;
-     meme.changePrice(price);
-     console.log(req.body.price);
-     res.render('meme', { meme: meme })
-  })
+})); 
+
+app.post('/meme/:memeId', function (req, res, next) {
+    let id : number = parseInt(req.params.memeId);
+
+    if (isNaN(id) || 0 > id || id >= Meme.nextId)
+      next(createError(404));
+
+    if (isNaN(req.body.price))
+      next(createError(422));
+
+    let meme : Meme = memeList.getMeme(req.params.memeId);
+    let price : number = req.body.price;
+    meme.changePrice(price);
+    res.render('meme', { meme: meme })
+})
 //
 
-app.use(logger('dev'));
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
