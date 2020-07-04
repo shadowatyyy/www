@@ -154,6 +154,21 @@ app.post('/quiz/:quizId/save', antiCsrf, async function (req : express.Request, 
 
 	delete req.session!.quizStart[id];
 	const result : QuizResult = req.body;
+
+	let sumFractions = 0;
+
+	for (let i = 0; i < result.fraction.length; i++) {
+		if (result.fraction[i] < 0 || result.fraction[i] > 1)
+			next(createError(422));
+
+		sumFractions += result.fraction[i];
+	}	
+
+	const eps = 1e-5;
+
+	if (sumFractions > 1 + eps || sumFractions < 1 - eps)
+		next(createError(422));
+
 	await addStats(res.locals.db, id, req.session!.login, result, timeSpent);
 	res.send();
 })
