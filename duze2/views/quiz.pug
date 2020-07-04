@@ -1,0 +1,40 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  title Page Title
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' type='text/css' media='screen' href='/css/main.css')
+  script var exports = {};
+  script(type='module' data-id=quizId data-token=token src='/src/main.js' defer)
+header.flex-child Quiz arytmetyczny
+section#intro.flex-child Liczyć każdy może!
+section#start_screen.flex-child
+  input.button(type='submit' value='Start quiz')
+  input.button(type='submit' value='Best scores')
+  input.button(type='submit' value='Back')
+section#main_screen.flex-child
+  section#timer.flex-child 0
+  section#question.flex-child
+    section#statement
+      | 2+2=
+    input(type='text')
+  section.button_flexbox.flex-child
+    input.button(type='submit' value='Previous')
+    input.button(type='submit' value='Next')
+    input.button(type='submit' value='Finish')
+    input.button(type='submit' value='Cancel')
+section#end_screen.flex-child
+  section#scoring
+    | Time: 12.3
+    | Penalty: 3
+    | Total: 15.3
+  section.button_flexbox
+    input.button(type='submit' value='Save score')
+section#scores_screen.flex-child
+  table#scores_table
+    tr
+      th Score
+      th Time
+      th Penalty
+  input.button(type='submit' value='Return')

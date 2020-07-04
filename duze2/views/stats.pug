@@ -1,0 +1,22 @@
+html
+  head
+    title Best scores
+    link(rel='stylesheet' type='text/css' media='screen' href='/css/main.css')
+  body
+    section#scores_screen.flex-child
+      table#scores_table
+        tr
+          th User
+          th Score
+          th Time
+          th Penalty
+        each stat in stats
+          tr
+            td=stat.login
+            td=Math.floor(stat.score / 1000) + '.' + Math.floor(stat.score % 1000 / 100) 
+            td=Math.floor(stat.totalTime / 1000) + '.' + Math.floor(stat.totalTime % 1000 / 100) 
+            td=stat.totalPenalty
+    section#main_screen.flex-child
+      section.button_flexbox.flex-child
+        form(action='http://localhost:3000')
+          input(type='submit' value='Return')

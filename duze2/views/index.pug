@@ -1,0 +1,19 @@
+html
+  head
+    title Start
+    link(rel='stylesheet' type='text/css' media='screen' href='/css/main.css')
+  body
+    if login
+      h1 Logged in as #{login}
+      a(href='/logout') Logout
+      a(href='/password') Change Password
+      h1 Quiz list
+      table
+        each index in list
+          tr
+            td
+              a(href="quiz/" + index) Go to quiz #{index}
+            td
+              a(href="quiz/" + index + "/personal") Personal score
+    else
+      a(href='/login') Login

@@ -1,0 +1,30 @@
+html
+  head
+    title Best scores
+    link(rel='stylesheet' type='text/css' media='screen' href='/css/main.css')
+  body
+    section#scores_screen.flex-child
+      table#scores_table
+        tr
+          th Content
+          th Answer
+          th Correct
+          th Time
+          th Average
+        - for (var i = 0; i < stat.questions.length; i++) {
+            - var content = stat.questions[i].statement
+            - var ans = stat.answers[i]
+            - var corr = stat.questions[i].answer
+            - var time = stat.time[i]
+            - var avg = stat.average[i]
+            tr
+              td=content
+              td=ans
+              td=corr
+              td.time_cell=Math.floor(time / 1000) + '.' + Math.floor(time % 1000 / 100)
+              td=Math.floor(avg / 1000) + '.' + Math.floor(avg % 1000 / 100)
+        - }
+    section#main_screen.flex-child
+      section.button_flexbox.flex-child
+        form(action='http://localhost:3000')
+          input(type='submit' value='Return')

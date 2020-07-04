@@ -1,0 +1,136 @@
+html {
+	height: 100%;
+	font-family: monaco, Consolas, Lucida Console, monospace;
+}
+
+a {
+	text-decoration: none;
+	color: rgb(150, 20, 150);
+}
+
+body {
+	background-color: #cd9dcd;
+	color: white;
+	font-size: 30px;	
+	font-weight: bold;
+	display: flex;
+	flex-direction: column;
+	height: 60%;
+	width: 60%;
+	position: absolute;
+  	top: 0; left: 0; bottom: 0; right: 0;
+	margin: auto;
+	align-items: stretch;
+	justify-content: center;
+}
+
+header {
+	display: flex;
+	justify-content: center;
+	align-items: center; 
+	flex: 1;
+}
+
+#intro {
+	display: flex;
+	justify-content: center;
+	align-items: center; 
+	flex: 1;
+}
+
+.flex-child {
+	height: 100%;
+}
+
+.button{
+	margin: auto;
+	text-align: center;
+	width: 150px;
+	height: 50px;
+	border-radius: 5px;
+	font-size: 15px;
+	color: #b652b6;
+}
+
+.button:disabled {
+	color: #ffffff;
+}
+
+.button_flexbox {
+	display: flex;
+	width: 100%;
+	align-items: center; 
+	justify-content: space-around;
+}
+
+#start_screen {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	flex: 3;
+}
+
+#main_screen {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+ 	top: 0; left: 0; bottom: 0; right: 0;
+	margin: auto;
+	align-items: stretch;
+	justify-content: space-around;
+	flex: 3;
+}
+
+#timer {
+	text-align: center;
+}
+
+#question {
+	display: flex;
+	align-content: space-around;
+}
+
+#end_screen {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	flex: 3;
+}
+
+#scores_screen {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+#scores_table {
+	margin: auto;
+	font-size: 20px;
+	text-align: center;
+}
+
+table {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#question {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	font-size: 70px;
+}
+
+input[type="text"] {
+	font-size:70px;
+	width: 210px;
+	color: #cd9dcd;
+}
+
+@media screen and (min-width: 1px) and (max-width: 400px) {
+	#question {
+		flex-direction: column;
+	}
+}

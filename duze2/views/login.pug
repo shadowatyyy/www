@@ -1,0 +1,22 @@
+html
+  head
+    link(rel='stylesheet' type='text/css' media='screen' href='/css/main.css')
+  body
+    h1="Login"      
+    form(action='/login', method='post')
+      input(type='hidden', name='_csrf', value=token)
+      table 
+        tr 
+          td 
+            label="Login"
+          td 
+            input(type='name', name='login', required=true)
+        tr 
+          td
+            label="Password"
+          td
+            input(type='password' name='password' required=true)
+        tr 
+          td 
+            input(type='submit', value="Submit")
+        
