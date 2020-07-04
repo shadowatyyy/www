@@ -155,6 +155,7 @@ app.post('/quiz/:quizId/save', antiCsrf, async function (req : express.Request, 
 	delete req.session!.quizStart[id];
 	const result : QuizResult = req.body;
 	await addStats(res.locals.db, id, req.session!.login, result, timeSpent);
+	res.send();
 })
 
 app.get('/quiz/:quizId/stats', antiCsrf, async function (req : express.Request, res : express.Response, next : express.NextFunction) {

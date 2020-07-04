@@ -56,7 +56,6 @@ export async function getAllStats(db : sqlite.Database, quiz_id : number, count 
     let ret : QuizStatistics[] = [];
 
     for (let row of found) {
-        console.log(row.json);
         const parsed : QuizStatistics = JSON.parse(row.json);
         ret.push(parsed);
     }
@@ -89,14 +88,11 @@ async function addAverageTimes(db : sqlite.Database, stats : QuizStatistics, qui
 }
 
 export async function getMyStats(db : sqlite.Database, quiz_id : number, user_login : string) : Promise<QuizStatistics> {
-    console.log("getMyStats", quiz_id, user_login);
-    console.log(await queryAll(db, "SELECT * FROM stats;", []));
     const found : any = await queryGet(db, "SELECT json FROM stats WHERE quiz_id = ? AND user_login = ?;", [quiz_id, user_login]);
 
     if (found == null)
         return null;
 
-    console.log("my stats", found.json);
     let ret : QuizStatistics = JSON.parse(found.json);
     await addAverageTimes(db, ret, quiz_id);
     return ret;
@@ -104,7 +100,6 @@ export async function getMyStats(db : sqlite.Database, quiz_id : number, user_lo
 
 
 export async function addStats(db : sqlite.Database, quiz_id : number, user_login : string, result : QuizResult, time : number) : Promise<void> {
-    console.log("addStats", quiz_id, result);
     const json : string = await getQuiz(db, quiz_id);
 
     if (json == null)
@@ -129,8 +124,6 @@ export async function getQuizList(db : sqlite.Database) : Promise<number[]> {
 export async function isSolved(db : sqlite.Database, quiz_id : number, user_login : string) : Promise<boolean> {
     const found : any = await queryGet(db, "SELECT * FROM stats WHERE quiz_id = ? AND user_login = ?;", [quiz_id, user_login]);
     
-    console.log(found);
-
     if (found)
         return true;
     else
