@@ -5,7 +5,6 @@ import "mocha";
 const host : string = "http://localhost:3000";
 const startPage : string = host + "/";
 const loginPage : string = host + "/login";
-const logoutPage : string = host + "/logout";
 const passwordPage : string = host + "/password";
 const quizPage : string = host + "/quiz/1";
 const personalPage : string = host + "/quiz/1/personal";
@@ -14,7 +13,6 @@ const startButton : string = '//input[@value="Start quiz"]';
 const solvedButton : string = '//input[@value="Already solved"]'
 const nextButton : string = '//input[@value="Next"]'
 const finishButton : string = '//input[@value="Finish"]'
-const returnButton : string = '//input[@value="Return"]';
 const inputCell : string = '//input[@type="text"]'
 
 async function makeLogin(login : string, password : string) {
