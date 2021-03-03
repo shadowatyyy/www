@@ -36,7 +36,7 @@
     "mocha": "^7.2.0",
     "mocha-webdriver": "^0.2.8",
     "morgan": "^1.9.1",
-    "pug": "^3.0.0",
+    "pug": "^3.0.1",
     "selenium-webdriver": "^3.6.0",
     "typescript": "^3.9.5",
     "util": "^0.12.3",
