@@ -16,7 +16,7 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "pug": "2.0.0-beta11",
+    "pug": "3.0.1",
     "chai": "^4.2.0",
     "mocha": "^7.2.0",
     "mocha-webdriver": "^0.2.8",
